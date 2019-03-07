@@ -8,6 +8,11 @@
   src: url('./assets/fonts/9asdjalksb2129a12j3.woff') format('woff');
 }
 @keyframes circle {
+  30% { r: 150; cy: 85; }
+  95% { r: 150; cy: 85; }
+  100% { r: 150; cy: 85; opacity: 0; display: none; }
+}
+@keyframes circleAndStay {
   to { r: 150; cy: 85; }
 }
 @keyframes slidein {
@@ -71,14 +76,19 @@ html, body {
 }
 .logo svg circle {
   animation-name: circle;
-  animation-duration: 2s;
+  animation-duration: 6s;
   animation-iteration-count: 1;
   animation-fill-mode: both;
 }
 .logo svg #circle-1 { fill: #081e54; animation-delay: 0.1s; }
 .logo svg #circle-2 { fill: #00bcff; animation-delay: 0.4s; }
 .logo svg #circle-3 { fill: #5f00ff; animation-delay: 0.55s; }
-.logo svg #circle-4 { fill: url(#GRADIENT); animation-delay: 0.8s; }
+.logo svg #circle-4 { 
+  fill: url(#GRADIENT); 
+  animation-name: circleAndStay;
+  animation-duration: 2s;
+  animation-delay: 0.8s; 
+}
 
 /* Content */
 .content {
