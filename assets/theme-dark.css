@@ -1,0 +1,20 @@
+body {
+  background: var(--color-black);
+  color: var(--color-light);
+}
+
+.content__slogan a {
+  border-color: rgba(160,185,255, 0.15);
+}
+.content__location a {
+  border-color: rgba(160,185,255, 0.15);
+}
+.content__location a:hover,
+.content__location a:focus {
+  border-color: rgba(160,185,255,0);
+  background: rgba(160,185,255, 0.1);
+  color: var(--color-primary);
+}
+.content__location a:focus {
+  border-color: var(--color-primary);
+}

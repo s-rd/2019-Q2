@@ -13,11 +13,12 @@
   <link rel="shortcut icon" href="./assets/favicon/favicon.ico">
   <meta name="msapplication-TileColor" content="#081e54">
   <meta name="msapplication-config" content="./assets/favicon/browserconfig.xml">
-  <meta name="theme-color" content="#081e54">
+  <meta name="theme-color" content="#ffffff">
 
   <title>Semonje — Studio of Simon Dagfinrud</title>
   <script src="https://unpkg.com/vue"></script>
-  <link rel="stylesheet" href="./assets/style.css" />
+
+  <link rel="stylesheet" href="./assets/style.css?v=9715sdk28sjd384" />
 
 </head>
 <body>
@@ -101,6 +102,7 @@
       el: '#app',
       data: {
         title: 'Simon Dagfinrud',
+        darkTheme: false,
         locations: [
           {
             title: 'Electronic mail',
@@ -125,6 +127,53 @@
             href: 'https://duolingo.com/semonje',
           },
         ],
+      },
+      mounted() {
+        this.postConsoleMessages()
+        this.detectNightTime()
+        this.initiateTheme()
+      },
+      methods: {
+        setTheme() {
+          const themeNode = document.querySelector('link[rel="stylesheet"][semonje-type="theme"]')
+          const androidTheme = document.querySelector('meta[name="theme-color"]')
+          themeNode.href = `./assets/theme-${this.currentTheme}.css`
+          androidTheme.setAttribute('content', this.darkTheme ? '#000000' : '#ffffff')
+        },
+        toggleTheme() {
+          this.darkTheme = !this.darkTheme;
+          this.setTheme()
+        },
+        initiateTheme() {
+          const androidTheme = document.querySelector('meta[name="theme-color"]')
+          const styleNode = document.createElement('LINK')
+          styleNode.setAttribute('rel', 'stylesheet')
+          styleNode.setAttribute('semonje-type', 'theme')
+          styleNode.setAttribute('href', `./assets/theme-${this.currentTheme}.css`)
+          document.head.appendChild(styleNode)
+          androidTheme.setAttribute('content', this.darkTheme ? '#000000' : '#ffffff')
+        },
+        detectNightTime() {
+          const hours = (new Date()).getHours()
+          if (hours < 7 || hours > 18) {
+            this.darkTheme = true
+            console.log("Seems like it's night time. Dark modify!")
+          }
+        },
+        postConsoleMessages() {
+          console.log("%cDon't look at my code 😱", "color: #ff0055; background: #000; padding: 8px 14px; border-radius: 5px; margin: 20px 0; font-size: 18px;")
+          setTimeout(() => {
+            console.log("I'm just kidding about the code thing, by the way.")
+          }, 3500)
+          setTimeout(() => {
+            console.log("If you're interested you can find the source code on https://github.com/semonje/2019-Q2. That being said, it consists pretty much of this HTML file 🙃")
+          }, 6500)
+        },
+      },
+      computed: {
+        currentTheme() {
+          return this.darkTheme ? 'dark' : 'light'
+        },
       },
     })
 

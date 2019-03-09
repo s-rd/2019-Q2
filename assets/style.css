@@ -1,3 +1,15 @@
+/* Variables */
+:root {
+  --font-heading: 'Radnika Bold', sans-serif;
+  --font-content: 'PT Mono', monospace;
+  --color-primary: #FF0055;
+  --color-dark: #081e54;
+  --color-light: #fff;
+  --color-white: #fff;
+  --color-black: #000;
+  --border-radius: 5px;
+}
+
 /* Animations */
 @font-face {
   font-family: 'Radnika Bold', sans-serif;
@@ -28,16 +40,6 @@
   }
 }
 
-/* Variables */
-:root {
-  --font-heading: 'Radnika Bold', sans-serif;
-  --font-content: 'PT Mono', monospace;
-  --color-primary: #FF0055;
-  --color-dark: #081e54;
-  --color-light: #ffffff;
-  --border-radius: 5px;
-}
-
 html, body {
   width: 100%;
   height: 100%;
@@ -46,8 +48,6 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: var(--color-dark);
-  background: var(--color-light);
 }
 
 /* Main */
@@ -68,12 +68,6 @@ html, body {
 }
 
 /* Logomark */
-.logo {
-
-}
-.logo svg {
-  fill: var(--color-primary);
-}
 .logo svg circle {
   animation-name: circle;
   animation-duration: 6s;
@@ -83,11 +77,11 @@ html, body {
 .logo svg #circle-1 { fill: #081e54; animation-delay: 0.1s; }
 .logo svg #circle-2 { fill: #00bcff; animation-delay: 0.4s; }
 .logo svg #circle-3 { fill: #5f00ff; animation-delay: 0.55s; }
-.logo svg #circle-4 { 
-  fill: url(#GRADIENT); 
+.logo svg #circle-4 {
+  fill: url(#GRADIENT);
   animation-name: circleAndStay;
   animation-duration: 2s;
-  animation-delay: 0.8s; 
+  animation-delay: 0.8s;
 }
 
 /* Content */
@@ -103,7 +97,7 @@ html, body {
 .content__slogan a {
   text-decoration: none;
   color: inherit;
-  border-bottom: solid 6px rgba(2,7,19, 0.05);
+  border-bottom: solid 6px;
   padding-bottom: 0rem;
   transition: ease 0.2s border,
               ease 0.5s color;
@@ -137,24 +131,19 @@ html, body {
   padding: 0.75rem 1rem;
   font-family: var(--font-content);
   font-size: 1.2em;
-  border: solid 2px rgba(2,7,19, 0.05);
+  border: solid 2px;
   margin-right: 1rem;
   border-radius: var(--border-radius);
   text-decoration: none;
-  color: var(--color-dark);
+  color: inherit;
   display: block;
   transition: ease 0.2s all;
 }
 .content__location a:hover,
 .content__location a:focus {
-  box-shadow: 0 2px 25px rgba(0,73,255, 0.05);
-  border-color: rgba(255,0,85,0.15);
-  color: var(--color-primary);
+  -webkit-tap-highlight-color: transparent;
   transform: translate(0,-1px);
   outline: none;
-}
-.content__location a:focus {
-  border-color: var(--color-primary);
 }
 
 /* Svg logo */
