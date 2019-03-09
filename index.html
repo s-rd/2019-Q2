@@ -18,7 +18,7 @@
   <title>Semonje — Studio of Simon Dagfinrud</title>
   <script src="https://unpkg.com/vue"></script>
 
-  <link rel="stylesheet" href="./assets/style.css?v=9715sdk28sjd384" />
+  <link rel="stylesheet" href="./assets/style.css?v=47sk982flto829d" />
 
 </head>
 <body>
@@ -94,6 +94,12 @@
           </template>
         </li>
       </ul>
+      <div
+        class="lightswitch"
+        @click="toggleTheme"
+      >
+        {{ darkTheme ? 'Light mode' : 'Dark mode' }}
+      </div>
     </div>
   </main>
 
