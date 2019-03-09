@@ -136,21 +136,26 @@
       },
       mounted() {
         this.postConsoleMessages()
-        this.detectNightTime()
         this.initiateTheme()
       },
       methods: {
         setTheme() {
+          sessionStorage.darkTheme = this.darkTheme
           const themeNode = document.querySelector('link[rel="stylesheet"][semonje-type="theme"]')
           const androidTheme = document.querySelector('meta[name="theme-color"]')
           themeNode.href = `./assets/theme-${this.currentTheme}.css`
           androidTheme.setAttribute('content', this.darkTheme ? '#000000' : '#ffffff')
         },
         toggleTheme() {
-          this.darkTheme = !this.darkTheme;
+          this.darkTheme = !this.darkTheme
           this.setTheme()
         },
         initiateTheme() {
+          if (sessionStorage.darkTheme) {
+            this.darkTheme = JSON.parse(sessionStorage.darkTheme)
+          } else {
+            this.detectNightTime()
+          }
           const androidTheme = document.querySelector('meta[name="theme-color"]')
           const styleNode = document.createElement('LINK')
           styleNode.setAttribute('rel', 'stylesheet')
@@ -163,6 +168,7 @@
           const hours = (new Date()).getHours()
           if (hours < 7 || hours > 18) {
             this.darkTheme = true
+            sessionStorage.darkTheme = true
             console.log("Seems like it's night time. Dark modify!")
           }
         },
