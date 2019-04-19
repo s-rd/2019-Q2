@@ -1,3 +1,5 @@
+![A screenshot of the site](/screenshot.png)
+
 # 2019-Q2
 > A very, very simple personal website.
 
